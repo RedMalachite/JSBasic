@@ -12,7 +12,6 @@
 
 // let age = prompt("Возраст");
 // let lastNum = Number(age[age.length - 1]);
-// // console.log (lastNum);
 // switch (lastNum) {
 //     case 2:
 //     case 3:
@@ -20,8 +19,7 @@
 //     break;
 //     case 1: console.log(`Вам ${age} год`);
 //     break;
-//     default:
-//         console.log(`Вам ${age} лет`);
+//     default: console.log(`Вам ${age} лет`);
 // }
 
 
@@ -39,24 +37,38 @@
 // }
 
 
-let num = (Number(prompt("Поиск совершенных чисел")));
-let sum = 0;
-
-// for (let i = 1; i <= num; i++) {
+// let num = (Number(prompt("Поиск совершенных чисел")));
+// let sum = 0;
+// for (let i = 1; i <= num; i++) { // итеррация чисел от 1 до N
 //     sum = 0;
-//     console.log(i);
-
-    for (let j = 1; j <= num / 2; j++) {
-        if (num % j === 0) {
-            sum += j;
-        }
-    }
-    if (sum === num) console.log(num + ': совершенное число');
-
+//     for (let j = 1; j <= i / 2; j++) { // проверка текущего числа N на совершенство
+//         if (i % j === 0) {
+//             sum += j;
+//             if (j === i / 2 && sum === i) console.log(i + ': совершенное число');
+//         }
+//     }
 // }
 
 
-// let height = (Number(prompt("Высота елки")));
+let star = '*';
+let tree = '';
+let height = Number(prompt("Высота елки"));
+for (let i = 0; i < height; i++) {
+
+ for(let j = 1; j < i + 1; j++){
+     // console.log(j);
+     tree += star;
+     console.log(tree.length, tree);
+ }
+}
+
+
+// if(height % 2 === 0) {
+//     console.log(height * 2 - 1);
+// } else {
+//     console.log(height * 2);
+// }
+
 // let star = '*';
 // for(let i = 1; i <= height; i++){
 //     console.log (`${star}
