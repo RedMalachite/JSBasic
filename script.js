@@ -51,27 +51,16 @@
 
 
 let star = '*';
-let tree = '';
+let spaces = ' ';
 let height = Number(prompt("Высота елки"));
-for (let i = 0; i < height; i++) {
-
- for(let j = 1; j < i + 1; j++){
-     // console.log(j);
-     tree += star;
-     console.log(tree.length, tree);
- }
+for (let i = height; i > 0; i--) {
+console.log(spaces.repeat(i) + star.repeat(i * 2 - 1));
 }
 
-
-// if(height % 2 === 0) {
-//     console.log(height * 2 - 1);
-// } else {
-//     console.log(height * 2);
+// let treeHeight = 5; // Высота елки
+//
+// for (let i = 1; i <= treeHeight; i++) {
+//     let spaces = ' '.repeat(treeHeight - i);
+//     let stars = '*'.repeat(2 * i - 1);
+//     console.log(spaces + stars);
 // }
-
-// let star = '*';
-// for(let i = 1; i <= height; i++){
-//     console.log (`${star}
-//     ${star}`);
-// }
-
