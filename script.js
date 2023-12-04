@@ -49,18 +49,14 @@
 //     }
 // }
 
-
-let star = '*';
-let spaces = ' ';
-let height = Number(prompt("Высота елки"));
-for (let i = height; i > 0; i--) {
-console.log(spaces.repeat(i) + star.repeat(i * 2 - 1));
-}
-
-// let treeHeight = 5; // Высота елки
-//
-// for (let i = 1; i <= treeHeight; i++) {
-//     let spaces = ' '.repeat(treeHeight - i);
-//     let stars = '*'.repeat(2 * i - 1);
-//     console.log(spaces + stars);
+// let height = prompt('Высота елки:');
+// let tree = new String;
+// let spaces = new String;
+// let stars = new String;
+// for (let i = 1; i <= height; i++) {
+//     spaces = ' '.repeat(height - i);
+//     stars = '*'.repeat(2 * i - 1);
+//     tree += spaces + stars + '\n';
 // }
+// console.log(tree);
+
