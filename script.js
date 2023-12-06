@@ -9,6 +9,9 @@
 // console.log(reverseString(str));
 
 
+
+
+
 // let str = prompt('Введите строку:', 'Учуя молоко, я около мяучу');
 // function isPalindrome(str) {
 //     let result = new String();
@@ -31,6 +34,9 @@
 // }
 // console.log(isPalindrome(str));
 
+
+
+
 // let firstNum = parseInt(prompt("Введите первое число"));
 // let secondNum = parseInt(prompt("Введите второе число"));
 // function findGCD(firstNum, secondNum) {
@@ -40,4 +46,4 @@
 //     }
 //     return result;
 // }
-// console.log(findGCD(firstNum, secondNum));
+// console.log(`НОД числел ${firstNum} и ${secondNum} является число ${findGCD(firstNum, secondNum)}`);
