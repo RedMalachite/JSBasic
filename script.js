@@ -1,62 +1,43 @@
-// let num = prompt("Fizz & Bizz. Введите число:");
-// if (num % 3 == 0 && num % 5 != 0) console.log("Fizz");
-// if (num % 5 == 0 && num % 3 != 0) console.log("Bizz");
-// if (num % 5 == 0 && num % 3 == 0) {
-//     console.log("FizzBizz");
-// } else console.log("No FizzBizz");
-
-// let year = prompt("Высокосный год?");
-// if (year % 4 === 0 && !(year % 100 === 0 && year % 400 !== 0)) {
-//     console.log(year + ' - это высокосный год');
-// } else console.log(year + ' - это НЕ высокосный год');
-
-// let age = prompt("Возраст");
-// let lastNum = Number(age[age.length - 1]);
-// switch (lastNum) {
-//     case 2:
-//     case 3:
-//     case 4: console.log(`Вам ${age} года`);
-//     break;
-//     case 1: console.log(`Вам ${age} год`);
-//     break;
-//     default: console.log(`Вам ${age} лет`);
-// }
-
-
-// let num = prompt("Простое или сложное число. Введите число больше 1:");
-// for (let i = 2; i <= num; i++) {
-//
-//     if (num % i === 0 && i < num / 2 + 1) {
-//         console.log(num + " - число сложное");
-//         break;
+// let str = prompt('Введите строку:');
+// let reverseStr = '';
+// function reverseString(str) {
+//     for (let i = str.length - 1; i >= 0; i--) {
+//         reverseStr += str[i];
 //     }
-//     if (i >= num / 2 + 1){
-//         console.log(num + " - число простое");
-//         break;
-//     }
+//     return reverseStr;
 // }
+// console.log(reverseString(str));
 
 
-// let num = (Number(prompt("Поиск совершенных чисел")));
-// let sum = 0;
-// for (let i = 1; i <= num; i++) { // итеррация чисел от 1 до N
-//     sum = 0;
-//     for (let j = 1; j <= i / 2; j++) { // проверка текущего числа N на совершенство
-//         if (i % j === 0) {
-//             sum += j;
-//             if (j === i / 2 && sum === i) console.log(i + ': совершенное число');
+// let str = prompt('Введите строку:', 'Учуя молоко, я около мяучу');
+// function isPalindrome(str) {
+//     let result = new String();
+//     for (let i = 0; i <= str.length - 1; i++) {
+//         switch (str[i]) { // убираем лишние знаки в предложении
+//             case ' ':
+//             case '.':
+//             case ',':
+//             case '-':
+//                 continue;
 //         }
+//         result += str[i].toLowerCase();
 //     }
+//     let reverseResult = new String();
+//     for (let i = result.length - 1; i >= 0; i--) {
+//         reverseResult += result[i];
+//     }
+//     if (result === reverseResult) return 'Палиндром';
+//     return "Не палиндром";
 // }
+// console.log(isPalindrome(str));
 
-// let height = prompt('Высота елки:');
-// let tree = new String;
-// let spaces = new String;
-// let stars = new String;
-// for (let i = 1; i <= height; i++) {
-//     spaces = ' '.repeat(height - i);
-//     stars = '*'.repeat(2 * i - 1);
-//     tree += spaces + stars + '\n';
+// let firstNum = parseInt(prompt("Введите первое число"));
+// let secondNum = parseInt(prompt("Введите второе число"));
+// function findGCD(firstNum, secondNum) {
+//     let result = new String();
+//     for (let i = 1; i <= Math.min(firstNum, secondNum); i++) {
+//         if (firstNum % i === 0 && secondNum % i === 0) result = i;
+//     }
+//     return result;
 // }
-// console.log(tree);
-
+// console.log(findGCD(firstNum, secondNum));
