@@ -20,3 +20,14 @@ function calculateAverageGrade(students) {
     return average.toFixed(1);
 }
 console.log(calculateAverageGrade(students));
+
+
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [3, 4, 5, 6, 7];
+function uniqueValues(array1, array2){
+   let newArray = array1.concat(array2);
+   newArray = [...new Set(newArray)];
+   return newArray;
+}
+const uniqueValuesArray = uniqueValues(array1, array2);
+console.log(uniqueValuesArray);
