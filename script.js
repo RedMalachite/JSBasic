@@ -25,4 +25,3 @@
 // }
 // let result = decor(check, 0);
 
-
