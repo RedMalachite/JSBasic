@@ -48,6 +48,6 @@
 //             break;
 //         }
 //     }
-//     if (attempt < maxAttempts) console.log(`Массив перебран без ошибок или с ошибками с количеством меньше позволенного: ${maxAttempts}`);
+//     console.log(`Массив перебран без ошибок или с ошибками с количеством меньше позволенного: ${maxAttempts}`);
 // }
-// let result = decor(check, 3);
+// let result = decor(check, 10);
