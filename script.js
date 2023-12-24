@@ -3,31 +3,30 @@ function Student(firstName, secondName, birthYear, courses) {
     this.secondName = secondName;
     this.birthYear = birthYear;
     this.courses = courses || [];
+}
 
-    this.addGrade = function (courseName, newGrade) {
+Student.prototype = {
+    addGrade: function(courseName, newGrade) {
         const course = this.findCourse(courseName);
         if (course) {
             course.grades.push(newGrade);
-            console.log(`Grade ${newGrade} is added to ${courseName}.
-            ${this.getGradesInfo(courseName)}`);
+            console.log(`Grade ${newGrade} is added to ${courseName}.\n${this.getGradesInfo(courseName)}`);
         } else {
             console.log(`Student is not enrolled in the course ${courseName}`);
         }
-    };
+    },
 
-    this.getAverageGrade = function (courseName) {
+    getAverageGrade: function(courseName) {
         const course = this.findCourse(courseName);
         if (course) {
-            let sum = course.grades.reduce(function (accumulator, currentValue) {
-                return accumulator + currentValue;
-            }, 0);
+            let sum = course.grades.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
             return `Average grade for ${courseName} is ${Math.round(sum / course.grades.length)}`;
         } else {
             return `Student is not enrolled in the course ${courseName}`;
         }
-    };
+    },
 
-    this.addVisit = function (courseName) {
+    addVisit: function(courseName) {
         const course = this.findCourse(courseName);
         if (course) {
             let visit = Boolean(prompt(`Enter something - student visited a lesson. Line empty - student missed a lesson`));
@@ -40,32 +39,30 @@ function Student(firstName, secondName, birthYear, courses) {
         } else {
             console.log(`Student is not enrolled in the course ${courseName}`);
         }
-    };
+    },
 
-    this.averageStudentsVisits = function (courseName) {
+    averageStudentsVisits: function(courseName) {
         const course = this.findCourse(courseName);
         if (course) {
-            let trueCount = course.visits.reduce(function (accumulator, value) {
-                return accumulator + (value === true ? 1 : 0);
-            }, 0);
+            let trueCount = course.visits.reduce((accumulator, value) => accumulator + (value === true ? 1 : 0), 0);
             let averageVisits = (trueCount / course.visits.length) * 100;
             return `Student's visits for ${courseName}: ${trueCount} of ${course.visits.length} lessons. Average visits: ${Math.round(averageVisits)}%`;
         } else {
             return `Student is not enrolled in the course ${courseName}`;
         }
-    };
+    },
 
-    this.lessons = function (courseName) {
+    lessons: function(courseName) {
         const course = this.findCourse(courseName);
         if (course) {
             console.log(`Completed lessons for ${courseName}: ${course.visits.length}`);
         } else {
             console.log(`Student is not enrolled in the course ${courseName}`);
         }
-    };
+    },
 
-    this.changeCourse = function () {
-        let newCourseName = prompt("Enter the name of the new course", "Typescript");
+    changeCourse: function() {
+        let newCourseName = prompt("Enter the name of the new course", "JS");
         let newCourse = this.findCourse(newCourseName);
         if (!newCourse) {
             newCourse = {
@@ -77,9 +74,9 @@ function Student(firstName, secondName, birthYear, courses) {
         }
         this.currentCourse = newCourse;
         console.log(`Student is now enrolled in the course: ${newCourseName}`);
-    };
+    },
 
-    this.deleteCourse = function (courseName) {
+    deleteCourse: function(courseName) {
         const index = this.courses.findIndex(course => course.name === courseName);
         if (index !== -1) {
             this.courses.splice(index, 1);
@@ -87,22 +84,22 @@ function Student(firstName, secondName, birthYear, courses) {
         } else {
             console.log(`Student is not enrolled in the course ${courseName}`);
         }
-    };
+    },
 
-    this.findCourse = function (courseName) {
+    findCourse: function(courseName) {
         return this.courses.find(course => course.name === courseName);
-    };
+    },
 
-    this.getGradesInfo = function (courseName) {
+    getGradesInfo: function(courseName) {
         const course = this.findCourse(courseName);
         if (course) {
             return `Grades for ${courseName}: ${course.grades.join(', ')}`;
         } else {
             return `Student is not enrolled in the course ${courseName}`;
         }
-    };
+    },
 
-    this.getCourseInfo = function (courseName) {
+    getCourseInfo: function(courseName) {
         const course = this.findCourse(courseName);
         if (course) {
             const averageGrade = this.getAverageGrade(courseName);
@@ -117,11 +114,11 @@ function Student(firstName, secondName, birthYear, courses) {
         } else {
             console.log(`Student is not enrolled in the course ${courseName}`);
         }
-    };
+    },
+};
 
-}
-
-let student = new Student('Andriy', 'Bondarenko', 1981);
+let student = [];
+let students = [];
 
 for (;;) {
     let choice = prompt(`Choose action:
@@ -133,6 +130,8 @@ for (;;) {
 6) Completed lessons
 7) Course info
 8) Delete course
+9) Add student
+10) Students list
 0) Exit`);
 
     if (choice == 0) break;
@@ -170,5 +169,24 @@ for (;;) {
             let courseForDelete = prompt("Enter the course name to delete");
             student.deleteCourse(courseForDelete);
             break;
+        case '9':
+            // if (student) {
+            //     console.log("Warning: Creating a new student will overwrite the existing student.");
+            //     let confirmation = prompt("Do you want to proceed? (y/n)");
+            //     if (confirmation.toLowerCase() !== 'y') {
+            //         break;
+            //     }
+            // }
+            let newFirstName = prompt("Enter the first name of the new student");
+            let newSecondName = prompt("Enter the second name of the new student");
+            let newBirthYear = Number(prompt("Enter the birth year of the new student"));
+            student = new Student(newFirstName, newSecondName, newBirthYear);
+            students.push(student);
+            console.log(`New student created: ${newFirstName} ${newSecondName}, Birth Year: ${newBirthYear}`);
+            break;
+        case '10':
+            console.log(students);
+            break
+
     }
 }
