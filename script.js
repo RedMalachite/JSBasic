@@ -117,66 +117,28 @@ Student.prototype = {
     },
 };
 
+// console.log(Student);
+
 let student = [];
 let students = [];
 
 for (;;) {
     let choice = prompt(`Choose action:
-1) Course
-2) Add grade
-3) Average student grade
-4) Add visits
-5) Average student's visits
-6) Completed lessons
-7) Course info
-8) Delete course
-9) Add student
-10) Students list
+1) Add student
+2) Course
+3) Add grade
+4) Average student grade
+5) Add visits
+6) Average student's visits
+7) Completed lessons
+8) Course info
+9) Delete course
 0) Exit`);
 
     if (choice == 0) break;
 
     switch (choice) {
         case '1':
-            student.changeCourse();
-            break;
-        case '2':
-            let courseForAddGrade = prompt("Enter the course name");
-            let newGrade = Number(prompt("New student's grade"));
-            student.addGrade(courseForAddGrade, newGrade);
-            break;
-        case '3':
-            let courseForAverageGrade = prompt("Enter the course name");
-            console.log(student.getAverageGrade(courseForAverageGrade));
-            break;
-        case '4':
-            let courseForAddVisit = prompt("Enter the course name");
-            student.addVisit(courseForAddVisit);
-            break;
-        case '5':
-            let courseForAverageVisits = prompt("Enter the course name");
-            console.log(student.averageStudentsVisits(courseForAverageVisits));
-            break;
-        case '6':
-            let courseForLessons = prompt("Enter the course name");
-            student.lessons(courseForLessons);
-            break;
-        case '7':
-            let courseForInfo = prompt("Enter the course name");
-            student.getCourseInfo(courseForInfo);
-            break;
-        case '8':
-            let courseForDelete = prompt("Enter the course name to delete");
-            student.deleteCourse(courseForDelete);
-            break;
-        case '9':
-            // if (student) {
-            //     console.log("Warning: Creating a new student will overwrite the existing student.");
-            //     let confirmation = prompt("Do you want to proceed? (y/n)");
-            //     if (confirmation.toLowerCase() !== 'y') {
-            //         break;
-            //     }
-            // }
             let newFirstName = prompt("Enter the first name of the new student");
             let newSecondName = prompt("Enter the second name of the new student");
             let newBirthYear = Number(prompt("Enter the birth year of the new student"));
@@ -184,9 +146,37 @@ for (;;) {
             students.push(student);
             console.log(`New student created: ${newFirstName} ${newSecondName}, Birth Year: ${newBirthYear}`);
             break;
-        case '10':
-            console.log(students);
-            break
-
+        case '2':
+            student.changeCourse();
+            break;
+        case '3':
+            let courseForAddGrade = prompt("Enter the course name");
+            let newGrade = Number(prompt("New student's grade"));
+            student.addGrade(courseForAddGrade, newGrade);
+            break;
+        case '4':
+            let courseForAverageGrade = prompt("Enter the course name");
+            console.log(student.getAverageGrade(courseForAverageGrade));
+            break;
+        case '5':
+            let courseForAddVisit = prompt("Enter the course name");
+            student.addVisit(courseForAddVisit);
+            break;
+        case '6':
+            let courseForAverageVisits = prompt("Enter the course name");
+            console.log(student.averageStudentsVisits(courseForAverageVisits));
+            break;
+        case '7':
+            let courseForLessons = prompt("Enter the course name");
+            student.lessons(courseForLessons);
+            break;
+        case '8':
+            let courseForInfo = prompt("Enter the course name");
+            student.getCourseInfo(courseForInfo);
+            break;
+        case '9':
+            let courseForDelete = prompt("Enter the course name to delete");
+            student.deleteCourse(courseForDelete);
+            break;
     }
 }
