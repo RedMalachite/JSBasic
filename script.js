@@ -262,8 +262,8 @@ let group = new Group();
 
 group.addStudent({name: `Andriy`, visits: [3, 3], grade: [100, 100, 70]});
 group.addStudent({name: `Sergiy`, visits: [3 , 0], grade: [0, 0, 0]});
-group.addStudent({name: `Artemiy`, visits: [3, 2], grade: [0, 90, 90]});
-group.addStudent({name: `Valerianka`, visits: [3 , 1], grade: [0, 100, 0]});
+group.addStudent({name: `Artemiy`, visits: [3, 2], grade: [0, 90, 60]});
+group.addStudent({name: `Valerianka`, visits: [3 , 1], grade: [0, 90, 0]});
 
 console.log(group);
 
@@ -284,7 +284,6 @@ for (;;) {
         case '1':
             let nameToRemove = prompt(`Student's name to remove:`);
             group.removeStudent(nameToRemove);
-            console.log(group);
             break;
 
         case '2':
