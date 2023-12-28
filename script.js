@@ -9,6 +9,9 @@
 // let userNumber = prompt("All Fibonacci numbers from 1 to:", "1000");
 // searchNums(0, 1);
 
+
+
+
 // function uniqueArrs(arr, startVal = 0) {
 //     if (startVal === arr.length - 1) {
 //         console.log(arr);
@@ -28,22 +31,26 @@
 // uniqueArrs(nums);
 
 
-
 let userNum = prompt("Enter an integer", "196");
 let step = 0;
-let str;
+let start = performance.now();
 function searchPalindrome(userNum) {
     const reversedNum = userNum.split('').reverse().join('');
     if (userNum == reversedNum) {
         let result = [userNum, step];
-        console.log(`Palindrome is found: ${userNum}. Number of summation steps: ${step}`, result);
+        console.log(`Palindrome is found: ${userNum}. Number of summation steps: ${step}\n Returning object is here: `, result);
         return result;
     } else {
         step++;
         let numResult = +userNum + +reversedNum;
-        str = numResult.toString();
-        console.log(step);
-        if (step >= 1000) return ;
+        let str = numResult.toString();
+        let end = performance.now();
+        let exec = end - start;
+        console.log(exec);
+        if (exec >= 500) {
+            console.log("return instruction");
+            return;
+        }
         searchPalindrome(str);
     }
 }
