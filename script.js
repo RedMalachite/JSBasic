@@ -2,7 +2,6 @@ class NotesList {
     constructor() {
         this.notes = [];
     }
-
     addNote(noteTitle, noteContent, isCompleted = false, time) {
         const newNote = {
             noteTitle: noteTitle,
@@ -12,21 +11,17 @@ class NotesList {
         };
         this.notes.push(newNote);
     }
-
     deleteNote(toDelete) {
         const indexToDelete = this.notes.findIndex(note => note.noteTitle === toDelete);
         this.notes.splice(indexToDelete, 1);
         console.log(`Note with title '${toDelete}' deleted.`);
-
     }
-
     editNote(toEdit) {
         const indexToEdit = this.notes.findIndex(note => note.noteTitle === toEdit);
         if (indexToEdit === -1) {
             console.log(`Note with title '${toEdit}' not found.`);
             return;
         }
-
         let newContent = prompt(`Enter new content for the note '${toEdit}':`);
         let isCompleted = prompt(`Is the note '${toEdit}' completed? (y/n):`);
         if (isCompleted === 'y') {
@@ -38,7 +33,6 @@ class NotesList {
 
         console.log(`Note '${toEdit}' edited.`);
     }
-
     getNoteInfo(getInfo) {
         const note = this.notes.find(note => note.noteTitle === getInfo);
         console.log(`Title: ${note.noteTitle}
@@ -46,11 +40,9 @@ class NotesList {
         Status: ${note.isCompleted}
         Date: ${note.time}`);
     }
-
     getNotes() {
         console.log(this.notes);
     }
-
     notesNumber(){
         const totalNotes = this.notes.length;
         const uncompletedNotes = this.notes.filter(note => !note.isCompleted).length;
@@ -58,23 +50,11 @@ class NotesList {
         console.log(`Total number of notes: ${totalNotes}\nNumber of uncompleted notes: ${uncompletedNotes}
         `);
     }
-
-    // getCompletedNotes() {
-    //     console.log(this.notes.filter(note => note.isCompleted));
-    // }
-    //
-    // getUncompletedNotes() {
-    //     console.log(this.notes.filter(note => !note.isCompleted));
-    //
-    // }
 }
-
 const myNotesList = new NotesList();
-
 myNotesList.addNote('New Year', `Don't worry! Be happy!`, true, time = new Date());
 myNotesList.addNote('JS tasks', `To complete the JS tasks`, false, time = new Date());
 myNotesList.addNote('NY salad', `Finish the salad with crab sticks`, false, time = new Date());
-
 for (; ;) {
     let choice = prompt(`Choice a variant:
     1) Add new note
