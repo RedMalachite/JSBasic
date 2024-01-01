@@ -2,9 +2,8 @@ class NotesList {
     constructor() {
         this.notes = [];
     }
-    addNote(noteTitle, noteContent, isCompleted = false, time, editTime) {
+    addNote(noteTitle, noteContent, isCompleted = false, time, editTime = null) {
         time = new Date();
-        editTime = new Date();
         const newNote = {
             noteTitle: noteTitle,
             noteContent: noteContent,
@@ -38,10 +37,6 @@ class NotesList {
         console.log(`Note '${toEdit}' edited.`);
     }
     getNoteInfo(getInfo) {
-        // if (){
-        //
-        //
-        // }
 
         const note = this.notes.find(note => note.noteTitle === getInfo);
 
@@ -99,9 +94,10 @@ class SortedNotesList extends NotesList {
 const sortedNotesList = new SortedNotesList();
 
 const myNotesList = new NotesList();
-sortedNotesList.addNote('New Year', `Don't worry! Be happy!`, true, time = new Date(), editTime= new Date());
-sortedNotesList.addNote('JS tasks', `To complete the JS tasks`, false, time = new Date(), editTime= new Date());
-sortedNotesList.addNote('NY salad', `Finish the salad with crab sticks`, true, time = new Date(), editTime= new Date());
+sortedNotesList.addNote('New Year', `Don't worry! Be happy!`, true, time = new Date());
+sortedNotesList.addNote('JS tasks', `To complete the JS tasks`, false, time = new Date());
+sortedNotesList.addNote('NY salad', `Finish the salad with crab sticks`, true, time = new Date());
+sortedNotesList.addNote('Movie', `Watch a movie`, false, time = new Date());
 for (; ;) {
     let choice = prompt(`Choice a variant:
     1) Add new note
