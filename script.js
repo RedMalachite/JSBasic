@@ -64,7 +64,7 @@ class SortedNotesList extends NotesList {
         super();
     }
 
-    sortNotesByStatus() {
+    sortNotesByCompleted() {
         // Сначала сортируем по статусу выполнения (завершенные впереди)
         this.notes.sort((a, b) => {
             if (a.isCompleted && !b.isCompleted) return -1;
@@ -76,7 +76,7 @@ class SortedNotesList extends NotesList {
         console.log("Sorted Notes by Status:");
         this.getNotes();
     }
-    sortNotesByUncompletedFirst() {
+    sortNotesByUncompleted() {
         // Сортируем по статусу выполнения (незавершенные впереди)
         this.notes.sort((a, b) => {
             if (!a.isCompleted && b.isCompleted) return -1;
@@ -89,7 +89,7 @@ class SortedNotesList extends NotesList {
         this.getNotes();
     }
 
-    sortNotesByEditTimeAscending() {
+    sortByAsc() {
         this.notes.sort((a, b) => {
             if (!a.editTime && b.editTime) return -1;
             if (a.editTime && !b.editTime) return 1;
@@ -101,14 +101,37 @@ class SortedNotesList extends NotesList {
     }
 
 
+
+    sortByDesc() {
+        // Сортируем заметки по убыванию времени редактирования
+        this.notes.sort((a, b) => {
+            if (!a.editTime && b.editTime) return 1;
+            if (a.editTime && !b.editTime) return -1;
+            if (a.editTime && b.editTime) return b.editTime - a.editTime;
+            return 0;
+        });
+        // Перемещаем заметки без времени редактирования в конец
+        this.notes.sort((a, b) => {
+            if (!a.editTime && b.editTime) return 1;
+            if (a.editTime && !b.editTime) return -1;
+            return 0;
+        });
+        // Выводим отсортированный список в консоль
+        console.log("Sorted Notes by Edit Time (Descending):");
+        this.getNotes();
+    }
+
+
+
 }
 const sortedNotesList = new SortedNotesList();
 
 const myNotesList = new NotesList();
-sortedNotesList.addNote('New Year', `Don't worry! Be happy!`, true, time = new Date());
-sortedNotesList.addNote('JS tasks', `To complete the JS tasks`, false, time = new Date());
-sortedNotesList.addNote('NY salad', `Finish the salad with crab sticks`, true, time = new Date());
+sortedNotesList.addNote('NY', `Don't worry! Be happy!`, true, time = new Date());
+sortedNotesList.addNote('JS', `To complete the JS tasks`, false, time = new Date());
+sortedNotesList.addNote('Salad', `Finish the salad with crab sticks`, true, time = new Date());
 sortedNotesList.addNote('Movie', `Watch a movie`, false, time = new Date());
+sortedNotesList.addNote('Book', `Read some pages`, true, time = new Date());
 for (; ;) {
     let choice = prompt(`Choice a variant:
     1) Add new note
@@ -120,6 +143,7 @@ for (; ;) {
     7) Sort the notes (completed first)
     8) Sort the notes (UNcompleted first)
     9) Sort by ascending edit time
+    10) Sort by descending edit time
     0) Exit`)
     if (choice == 0) break;
     switch (choice) {
@@ -149,13 +173,16 @@ for (; ;) {
             sortedNotesList.notesNumber();
             break;
         case '7':
-            sortedNotesList.sortNotesByStatus();
+            sortedNotesList.sortNotesByCompleted();
             break;
         case '8':
-            sortedNotesList.sortNotesByUncompletedFirst();
+            sortedNotesList.sortNotesByUncompleted();
             break;
         case '9':
-            sortedNotesList.sortNotesByEditTimeAscending();
+            sortedNotesList.sortByAsc();
+            break;
+        case '10':
+            sortedNotesList.sortByDesc();
             break;
     }
 }
