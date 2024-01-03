@@ -12,6 +12,7 @@ class NotesList {
             editTime: editTime
         };
         this.notes.push(newNote);
+        console.log(`Note "${noteTitle}" was added`);
     }
     deleteNote(toDelete) {
         const indexToDelete = this.notes.findIndex(note => note.noteTitle === toDelete);
@@ -39,9 +40,6 @@ class NotesList {
     getNoteInfo(getInfo) {
 
         const note = this.notes.find(note => note.noteTitle === getInfo);
-
-        console.log(`${note.time}\n${note.editTime}`);
-        if(note.time == note.editTime) console.log("Same");
         console.log(`Title: ${note.noteTitle}
         Content: ${note.noteContent}
         Status: ${note.isCompleted}
@@ -90,6 +88,19 @@ class SortedNotesList extends NotesList {
         console.log("Sorted Notes by Uncompleted First:");
         this.getNotes();
     }
+
+    sortNotesByEditTimeAscending() {
+        this.notes.sort((a, b) => {
+            if (!a.editTime && b.editTime) return -1;
+            if (a.editTime && !b.editTime) return 1;
+            if (a.editTime && b.editTime) return a.editTime - b.editTime;
+            return 0;
+        });
+        console.log("Sorted Notes by Edit Time (Ascending):");
+        this.getNotes();
+    }
+
+
 }
 const sortedNotesList = new SortedNotesList();
 
@@ -108,6 +119,7 @@ for (; ;) {
     6) Total number of all and uncompleted notes
     7) Sort the notes (completed first)
     8) Sort the notes (UNcompleted first)
+    9) Sort by ascending edit time
     0) Exit`)
     if (choice == 0) break;
     switch (choice) {
@@ -141,6 +153,9 @@ for (; ;) {
             break;
         case '8':
             sortedNotesList.sortNotesByUncompletedFirst();
+            break;
+        case '9':
+            sortedNotesList.sortNotesByEditTimeAscending();
             break;
     }
 }
