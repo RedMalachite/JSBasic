@@ -11,17 +11,12 @@ async function getWeather() {
     const weatherSection = document.getElementById('weatherSection');
 
     try {
-        // Step 1: Get city coordinates
         const coordinates = await getCityCoordinates(apiKey, cityInput);
-
-        // Step 2: Get weather data using coordinates
         const weatherData = await getWeatherData(apiKey, coordinates);
-
-        // Display weather information
         displayWeather(weatherData, weatherSection);
     } catch (error) {
         console.error('Error:', error);
-        weatherSection.innerHTML = 'Error fetching weather data.';
+        weatherSection.innerHTML = 'Can not get weather data';
     }
 }
 
@@ -55,9 +50,11 @@ async function getWeatherData(apiKey, coordinates) {
 }
 
 function displayWeather(weatherData, weatherSection) {
+    const temperatureCelsius = (weatherData.main.temp - 273.15).toFixed(2);
+
     const weatherHtml = `
         <h2>${weatherData.name}, ${weatherData.sys.country}</h2>
-        <p>Temperature: ${weatherData.main.temp} &deg;C</p>
+        <p>Temperature: ${temperatureCelsius} &deg;C</p>
         <p>Weather: ${weatherData.weather[0].description}</p>
         <p>Humidity: ${weatherData.main.humidity}%</p>
         <p>Wind Speed: ${weatherData.wind.speed} m/s</p>

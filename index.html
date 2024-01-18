@@ -6,6 +6,59 @@
     <title>Weather Widget</title>
 </head>
 <body>
+<style>
+    body {
+        font-family: "Comic Sans MS", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    label {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    #cityInput {
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+    }
+
+    #weatherSection {
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 16px;
+        margin: 8px 0;
+    }
+</style>
 <label for="cityInput">Enter city name:</label>
 <input type="text" id="cityInput">
 <button onclick="getWeather()">Get Weather</button>
