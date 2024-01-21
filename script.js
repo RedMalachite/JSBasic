@@ -1,65 +1,61 @@
-// async function fetchData(){
-//     let responce = await fetch('https://swapi.dev/api/people/1');
-//     let data = await responce.json();
-//     return data;
+// let num = prompt('Fibonacci numbers from 0 to:', '10');
+// let currentResult;
+// function* fibonacci(num) {
+//     let a = 0;
+//     let b = 1;
+//     while (a <= num) {
+//         yield a;
+//         [a, b] = [b, a + b];
+//     }
 // }
-// console.log(fetchData());
+// const fibGen = fibonacci(num);
+//
+// console.log(fibGen.next().value);
+// console.log(fibGen.next().value);
+// console.log(fibGen.next().value);
+// console.log(fibGen.next().value);
+// console.log(fibGen.next().value);
+// console.log(fibGen.next().value);
+// console.log(fibGen.next().value);
+// console.log(fibGen.next().value);
 
-async function getWeather() {
-    const apiKey = '80ef50b309a6427e5f1ab29cce1ca7ee';
-    const cityInput = document.getElementById('cityInput').value;
-    const weatherSection = document.getElementById('weatherSection');
 
-    try {
-        const coordinates = await getCityCoordinates(apiKey, cityInput);
-        const weatherData = await getWeatherData(apiKey, coordinates);
-        displayWeather(weatherData, weatherSection);
-    } catch (error) {
-        console.error('Error:', error);
-        weatherSection.innerHTML = 'Can not get weather data';
-    }
-}
 
-async function getCityCoordinates(apiKey, cityName) {
-    const geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
-    const response = await fetch(geocodingUrl);
-    const data = await response.json();
 
-    if (data.length === 0) {
-        throw new Error('City not found');
-    }
 
-    const coordinates = {
-        lat: data[0].lat,
-        lon: data[0].lon
-    };
+// async function* generator(promises) {
+//     for (const promise of promises) {
+//             const result = await promise;
+//             yield result;
+//     }
+// }
+// const promises = [
+//     new Promise((resolve) => setTimeout(() => resolve(1), 1000)),
+//     new Promise((resolve) => setTimeout(() => resolve('2'), 500)),
+//     new Promise((resolve) => setTimeout(() => resolve(4), 3000)),
+//     new Promise((resolve) => setTimeout(() => resolve(3), 1500)),
+// ];
+//
+// (async () => {
+//     const resultGen = generator(promises);
+//     for await (const result of resultGen) {
+//         console.log(result);
+//     }
+// })();
 
-    return coordinates;
-}
 
-async function getWeatherData(apiKey, coordinates) {
-    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
-    const response = await fetch(weatherUrl);
-    const data = await response.json();
 
-    if (data.cod !== 200) {
-        throw new Error(`Error: ${data.message}`);
-    }
 
-    return data;
-}
-
-function displayWeather(weatherData, weatherSection) {
-    const temperatureCelsius = (weatherData.main.temp - 273.15).toFixed(2);
-
-    const weatherHtml = `
-        <h2>${weatherData.name}, ${weatherData.sys.country}</h2>
-        <p>Temperature: ${temperatureCelsius} &deg;C</p>
-        <p>Weather: ${weatherData.weather[0].description}</p>
-        <p>Humidity: ${weatherData.main.humidity}%</p>
-        <p>Wind Speed: ${weatherData.wind.speed} m/s</p>
-        <p>Pressure: ${weatherData.main.pressure} hPa</p>
-      `;
-
-    weatherSection.innerHTML = weatherHtml;
-}
+// function* flatten(numArr) {
+//     for (const element of numArr) {
+//         if (Array.isArray(element)) {
+//             yield* flatten(element);
+//         } else {
+//             yield element;
+//         }
+//     }
+// }
+//
+// const numArr = [1, [2, 3], [4, 5, [6, 7]], 2, [10, -4]];
+// const gen = flatten(numArr);
+// console.log([...gen]);
